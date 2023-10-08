@@ -117,6 +117,21 @@ services:
       - 8989:8989
     restart: unless-stopped
 
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    networks:
+      - mynetwork
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - bazarr-config:/config
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+
   prowlarr:
     container_name: prowlarr
     image: linuxserver/prowlarr:1.8.6
@@ -194,6 +209,7 @@ volumes:
   torrent-downloads:
   radarr-config:
   sonarr-config:
+  bazarr-config:
   prowlarr-config:
   jellyfin-config:
   qbittorrent-config:
