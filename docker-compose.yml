@@ -128,6 +128,7 @@ services:
       - TZ=UTC
     volumes:
       - bazarr-config:/config
+      - torrent-downloads:/downloads
     ports:
       - 6767:6767
     restart: unless-stopped
